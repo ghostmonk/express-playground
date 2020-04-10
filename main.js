@@ -1,19 +1,17 @@
 require('dotenv').config()
 
-var express = require('express');
-var Twitter = require('twitter');
-
-var app = express();
+const app = require('express')();
 app.listen(process.env.PORT);
 
-const timelinePath = '/statuses/user_timeline.json';
-
+const Twitter = require('twitter');
 var client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
+
+const timelinePath = '/statuses/user_timeline.json';
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + "/views/index.html");
