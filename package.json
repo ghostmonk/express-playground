@@ -4,6 +4,7 @@
   "description": "Exploring the wonder of express",
   "main": "main.js",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "twitter": "^1.7.1"
   },

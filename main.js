@@ -1,21 +1,27 @@
-var express = require('express');
-var url = require('url')
-var app = express();
-app.listen(8080);
+require('dotenv').config()
 
-app.get('/', function(request, response) {
-  response.sendFile(__dirname + "/index.html");
+var express = require('express');
+var Twitter = require('twitter');
+
+var app = express();
+app.listen(process.env.PORT);
+
+const timelinePath = '/statuses/user_timeline.json';
+
+var client = new Twitter({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-app.get('/tweet/:username', function(req, response) {
+app.get('/', function(request, response) {
+  response.sendFile(__dirname + "/views/index.html");
+});
+
+app.get('/tweets/:username', function(req, response) {
   var username = req.params.username;
-  options = {
-    protocol: "http",
-    host: "api.twitter.com",
-    pathname: '/1/statuses/user_timeline.json',
-    query: { screen_name: username, count: 10}
-  };
-  
-  var twitterUrl = url.format(options);
-  request(twitterUrl).pipe(response);
+  client.get(timelinePath, {screen_name: username, count: 10}, function(err, tweets, res) {
+    response.send(tweets);
+  });
 });
