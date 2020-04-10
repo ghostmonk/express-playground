@@ -1,0 +1,28 @@
+{
+  "name": "express-playground",
+  "version": "1.0.0",
+  "description": "Exploring the wonder of express",
+  "main": "main.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghostmonk/express-playground.git"
+  },
+  "keywords": [
+    "playground",
+    "testing"
+  ],
+  "author": "Nicholas Hillier <nicholas@ghostmonk.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ghostmonk/express-playground/issues"
+  },
+  "homepage": "https://github.com/ghostmonk/express-playground#readme"
+}
